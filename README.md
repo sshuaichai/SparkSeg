@@ -19,11 +19,11 @@ hist = previous stage output, reused as an extra attention source at Stages 2–
 
 ## 📊 Results
 
-| Dataset | Host | Init | Mean DSC (%) | Mean HD95 (mm) | Train mem | Params | FLOPs | Latency |
+| Dataset | Host | Epochs | Init | Mean DSC (%) | Mean HD95 (mm) | Train mem | Params | FLOPs | Latency |
 |---|---|---|---|---|---|---|---|---|
-| ACDC | residual encoder | `no_stock_he` | **91.98** | **1.08** | 15.0 GB | 111.1 M | 440.4 G | 0.087 s |
-| Synapse/BTCV | residual encoder | `stock_he` | **85.94** | **11.21** | 13.7 GB | 111.1 M | 1,089.4 G | 7.523 s |
-| BraTS2021 | plain U-Net | `no_stock_he` | **91.73** | **2.57** | 11.3 GB | 34.8 M | 575.1 G | 0.356 s |
+| ACDC | residual encoder | 200 | `no_stock_he` | **91.98** | **1.08** | 15.0 GB | 111.1 M | 440.4 G | 0.087 s |
+| Synapse/BTCV | residual encoder | 1,000 | `stock_he` | **85.94** | **11.21** | 13.7 GB | 111.1 M | 1,089.4 G | 7.523 s |
+| BraTS2021 | plain U-Net | 1,000 | `no_stock_he` | **91.73** | **2.57** | 11.3 GB | 34.8 M | 575.1 G | 0.356 s |
 
 ```
 host-matched control → +0.85 ACDC · +0.36 BraTS2021 · +0.40 Synapse (mean DSC)
