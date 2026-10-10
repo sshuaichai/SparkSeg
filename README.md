@@ -134,9 +134,9 @@ nnU-Net-format packs; official portals for citation and licensing. Follow each d
 
 | Dataset | nnU-Net pack | Official source |
 |---|---|---|
-| ACDC | [Baidu](https://pan.baidu.com/s/1UpbyOIFCrYgThEsCaDyAWg?pwd=fr7t) `fr7t` - [Aliyun](https://www.alipan.com/s/EJPiXceGWZV) | [Human Heart Project](https://humanheart-project.creatis.insa-lyon.fr/database/#collection/637218c173e9f0047faa00fb) |
-| Synapse / BTCV | [Baidu](https://pan.baidu.com/s/1IvX_5Q1h6QeSDa__gjEX_A?pwd=drsm) `drsm` | [Synapse syn3193805](https://www.synapse.org/Synapse:syn3193805/wiki/89480) |
-| BraTS 2021 | [Aliyun](https://www.alipan.com/s/M7cS2KvaAuK) | [Synapse syn25829067](https://www.synapse.org/Synapse:syn25829067) |
+| ACDC | [Baidu](https://pan.baidu.com/s/1U_HlzeetW2kNKHKFC7-OvA?pwd=yiyk) `yiyk` | [Human Heart Project](https://humanheart-project.creatis.insa-lyon.fr/database/#collection/637218c173e9f0047faa00fb) |
+| Synapse / BTCV | [Baidu](https://pan.baidu.com/s/1RsphDHFFMrAdtFDjgfaTEg?pwd=4463) `4463` | [Synapse syn3193805](https://www.synapse.org/Synapse:syn3193805/wiki/89480) |
+| BraTS 2021 | [Baidu](https://pan.baidu.com/s/1gyC9G7RnbavCt9jmeN8FfQ?pwd=mna8) `mna8` | [Synapse syn25829067](https://www.synapse.org/Synapse:syn25829067) |
 
 BraTS 2021 (1,251 cases) — the 2022/2023 Adult Glioma releases redistribute the same cohort.
 
