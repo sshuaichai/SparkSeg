@@ -299,7 +299,7 @@ def verify_installed(
 ) -> List[Dict[str, Any]]:
     reports = []
     for dataset in datasets:
-        preset = resolve_preset(dataset)
+        preset = dataset if isinstance(dataset, DatasetPreset) else resolve_preset(dataset)
         assert preset is not None
         folder = model_folder(Path(results_root), preset)
         manifest_path = folder / "sparkseg_release_manifest.json"

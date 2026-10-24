@@ -156,10 +156,10 @@ def _hd95(
     if not np.any(pred_surface) or not np.any(ref_surface):
         return None
     to_reference = distance_transform_edt(
-        ~reference, sampling=tuple(spacing)
+        ~ref_surface, sampling=tuple(spacing)
     )[pred_surface]
     to_prediction = distance_transform_edt(
-        ~prediction, sampling=tuple(spacing)
+        ~pred_surface, sampling=tuple(spacing)
     )[ref_surface]
     distances = np.concatenate([to_reference, to_prediction])
     return float(np.percentile(distances, 95)) if distances.size else None

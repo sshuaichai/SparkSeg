@@ -352,18 +352,42 @@ def doctor(datasets: Sequence[DatasetPreset]) -> int:
 
     print("\nDatasets")
     for preset in datasets:
-        raw = raw_dir(preset)
-        prep = preprocessed_dir(preset)
-        model = source_model_folder(env_root("nnUNet_results"), preset)
-        checkpoint = model / f"fold_{preset.fold}" / "checkpoint_final.pth"
-        label_cases = len(list((raw / "labelsTr").glob("*.nii.gz"))) if raw.is_dir() else 0
-        test_cases = len(list((raw / "labelsTs").glob("*.nii.gz"))) if raw.is_dir() else 0
+        raw_value = os.environ.get("nnUNet_raw")
+        prep_value = os.environ.get("nnUNet_preprocessed")
+        results_value = os.environ.get("nnUNet_results")
+        raw = (
+            Path(raw_value).expanduser().resolve() / preset.raw_name
+            if raw_value
+            else None
+        )
+        prep = (
+            Path(prep_value).expanduser().resolve() / preset.raw_name
+            if prep_value
+            else None
+        )
+        model = (
+            source_model_folder(Path(results_value).expanduser().resolve(), preset)
+            if results_value
+            else None
+        )
+        checkpoint = (
+            model / f"fold_{preset.fold}" / "checkpoint_final.pth"
+            if model is not None
+            else None
+        )
+        raw_ok = bool(raw and raw.is_dir())
+        prep_ok = bool(prep and prep.is_dir())
+        checkpoint_ok = bool(checkpoint and checkpoint.is_file())
+        label_cases = len(list((raw / "labelsTr").glob("*.nii.gz"))) if raw_ok else 0
+        test_cases = len(list((raw / "labelsTs").glob("*.nii.gz"))) if raw_ok else 0
         print(
             f"  {preset.name:8s} modality={preset.modality:3s} id={preset.dataset_id:<4d} "
-            f"raw={raw.is_dir()} train_labels={label_cases} test_labels={test_cases} "
-            f"preprocessed={prep.is_dir()} checkpoint={checkpoint.is_file()}"
+            f"raw={raw_ok} train_labels={label_cases} test_labels={test_cases} "
+            f"preprocessed={prep_ok} checkpoint={checkpoint_ok}"
         )
-        failures += int(not raw.is_dir())
+        failures += int(not raw_ok)
+        failures += int(not prep_ok)
+        failures += int(not checkpoint_ok)
     return 1 if failures else 0
 
 
