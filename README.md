@@ -46,7 +46,7 @@ column is shown in red bold.
 
 BraTS2021: DSC (%) and HD95 (mm).
 
-<table>
+<table style="font-size: 12px; line-height: 1.25;">
 <thead><tr>
 <th>Model</th>
 <th>DSC WT</th>
@@ -280,7 +280,7 @@ BraTS2021: DSC (%) and HD95 (mm).
 
 ACDC: DSC (%) and HD95 (mm).
 
-<table>
+<table style="font-size: 12px; line-height: 1.25;">
 <thead><tr>
 <th>Model</th>
 <th>DSC RV</th>
@@ -484,7 +484,7 @@ ACDC: DSC (%) and HD95 (mm).
 
 Synapse/BTCV: DSC (%) by organ.
 
-<table>
+<table style="font-size: 12px; line-height: 1.25;">
 <thead><tr>
 <th>Model</th>
 <th>Aor.</th>
@@ -649,7 +649,7 @@ Synapse/BTCV: DSC (%) by organ.
 
 Synapse/BTCV: HD95 (mm) and resources.
 
-<table>
+<table style="font-size: 12px; line-height: 1.25;">
 <thead><tr>
 <th>Model</th>
 <th>Aor.</th>
@@ -866,7 +866,7 @@ Synapse/BTCV: HD95 (mm) and resources.
 
 KiTS23: DSC (%) and HD95 (mm).
 
-<table>
+<table style="font-size: 12px; line-height: 1.25;">
 <thead><tr>
 <th>Model</th>
 <th>DSC K&amp;M</th>
