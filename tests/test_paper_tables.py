@@ -1,4 +1,4 @@
-"""Checks for the generated manuscript comparison tables."""
+"""Checks for the rendered comparison tables."""
 
 from __future__ import annotations
 
@@ -19,9 +19,17 @@ def test_paper_tables_cover_all_comparisons():
         assert title in readme
 
 
-def test_sparkseg_kits23_metrics_are_best():
+def test_comparison_tables_are_rendered_as_assets():
     readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(
         encoding="utf-8"
     )
-    assert '<strong><span style="color:#d62728">85.66</span></strong>' in readme
-    assert '<strong><span style="color:#d62728">13.41</span></strong>' in readme
+    for filename in (
+        "table1_brats2021_v5.png",
+        "table2_acdc_v5.png",
+        "table3a_synapse_dsc_v5.png",
+        "table3b_synapse_hd95_resources_v5.png",
+        "table4_kits23_v5.png",
+    ):
+        relative = f"assets/paper/{filename}"
+        assert relative in readme
+        assert (Path(__file__).resolve().parents[1] / relative).is_file()

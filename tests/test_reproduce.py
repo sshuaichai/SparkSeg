@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from SparkSeg.network.config import DATASET_PRESETS
@@ -34,7 +35,7 @@ def test_readme_trainer_table_matches_presets():
         "kits23": "KiTS23",
     }
     host = {"resenc": "residual encoder", "plainconv": "plain U-Net"}
-    init = {"stock_he": "`stock_he`", "no_stock_he": "不使用 `stock_he`"}
+    init = {"stock_he": "`stock_he`", "no_stock_he": "no `stock_he`"}
     for key, preset in DATASET_PRESETS.items():
         row = (
             f"| {preset.modality} | {display[key]} | {preset.dataset_id} | "
@@ -42,6 +43,17 @@ def test_readme_trainer_table_matches_presets():
             f"{preset.epochs:,} |"
         )
         assert row in readme
+
+
+def test_presets_have_reproducible_splits():
+    split_dir = Path(__file__).resolve().parents[1] / "splits"
+    for preset in DATASET_PRESETS.values():
+        split = json.loads(
+            (split_dir / f"{preset.raw_name}.json").read_text(encoding="utf-8")
+        )
+        assert len(split) == 1
+        assert split[0]["train"]
+        assert split[0]["val"]
 
 
 def test_release_upload_list():
