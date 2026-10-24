@@ -22,22 +22,21 @@ English | [Chinese](README_CN.md)
 
 ## 📊 Results
 
-DSC is reported in % and HD95 in mm. Higher DSC and lower HD95 are better. The
-best value in every numerical column is red bold with a pale red cell; memory is
-ranked by training/inference memory, and lower parameters, FLOPs, and latency
-are preferred.
+Values are reported as DSC (%) / HD95 (mm). Higher DSC and lower HD95 are
+better; SparkSeg results are shown in bold.
 
-| Dataset | Modality | SparkSeg DSC | nnU-Net DSC | nnU-Net ResEnc DSC | SparkSeg HD95 | nnU-Net HD95 | nnU-Net ResEnc HD95 |
-|---|---|---:|---:|---:|---:|---:|---:|
-| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | 91.17 | 91.13 | <strong><span style="color:#d62728">1.08</span></strong> | 1.11 | 1.09 |
-| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | 91.36 | 91.51 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 2.60 |
-| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | 84.43 | 85.54 | <strong><span style="color:#d62728">11.21</span></strong> | 11.72 | 11.91 |
-| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | 85.12 | 84.36 | <strong><span style="color:#d62728">13.41</span></strong> | 18.41 | 17.78 |
+| Dataset | SparkSeg<br>DSC (%) ↑ / HD95 (mm) ↓ | nnU-Net<br>DSC (%) ↑ / HD95 (mm) ↓ | nnU-Net ResEnc<br>DSC (%) ↑ / HD95 (mm) ↓ |
+|---|---:|---:|---:|
+| ACDC | **91.98 / 1.08** | 91.17 / 1.11 | 91.13 / 1.09 |
+| BraTS2021 | **91.73 / 2.57** | 91.36 / 2.86 | 91.51 / 2.60 |
+| Synapse/BTCV | **85.94 / 11.21** | 84.43 / 11.72 | 85.54 / 11.91 |
+| KiTS23 | **85.66 / 13.41** | 85.12 / 18.41 | 84.36 / 17.78 |
 
 ## 📋 Full method comparison
 
-The following tables report all methods. The best value in each DSC/HD95
-column is shown in red bold.
+The following tables report all methods. The best value in every numerical
+column is shown in red bold with a pale red cell. Memory is ranked by
+training/inference memory; lower parameters, FLOPs, and latency are preferred.
 
 ### Table 1. BraTS2021 comparison
 

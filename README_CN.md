@@ -19,20 +19,20 @@
 
 ## 📊 论文结果
 
-DSC 单位为 %，HD95 单位为 mm；DSC 越高越好，HD95 越低越好。每一数值列的
-最优值使用红色粗体和浅红底纹；显存按训练/推理两项依次比较，参数量、FLOPs
-和延迟均取较小值。
+指标按 DSC (%) / HD95 (mm) 排列；DSC 越高越好，HD95 越低越好，SparkSeg
+结果使用粗体显示。
 
-| 数据集 | 模态 | SparkSeg DSC | nnU-Net DSC | nnU-Net ResEnc DSC | SparkSeg HD95 | nnU-Net HD95 | nnU-Net ResEnc HD95 |
-|---|---|---:|---:|---:|---:|---:|---:|
-| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | 91.17 | 91.13 | <strong><span style="color:#d62728">1.08</span></strong> | 1.11 | 1.09 |
-| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | 91.36 | 91.51 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 2.60 |
-| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | 84.43 | 85.54 | <strong><span style="color:#d62728">11.21</span></strong> | 11.72 | 11.91 |
-| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | 85.12 | 84.36 | <strong><span style="color:#d62728">13.41</span></strong> | 18.41 | 17.78 |
+| 数据集 | SparkSeg<br>DSC (%) ↑ / HD95 (mm) ↓ | nnU-Net<br>DSC (%) ↑ / HD95 (mm) ↓ | nnU-Net ResEnc<br>DSC (%) ↑ / HD95 (mm) ↓ |
+|---|---:|---:|---:|
+| ACDC | **91.98 / 1.08** | 91.17 / 1.11 | 91.13 / 1.09 |
+| BraTS2021 | **91.73 / 2.57** | 91.36 / 2.86 | 91.51 / 2.60 |
+| Synapse/BTCV | **85.94 / 11.21** | 84.43 / 11.72 | 85.54 / 11.91 |
+| KiTS23 | **85.66 / 13.41** | 85.12 / 18.41 | 84.36 / 17.78 |
 
 ## 📋 论文全部方法对比
 
-以下为稿件全部方法对比；每个 DSC/HD95 列的最优值以红色粗体显示。
+以下为全部方法对比；每一数值列的最优值使用红色粗体和浅红底纹。显存按
+训练/推理两项依次比较，参数量、FLOPs 和延迟均取较小值。
 
 ### Table 1. BraTS2021 comparison
 
