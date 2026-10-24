@@ -1,5 +1,6 @@
 include LICENSE.txt
 include README.md
+include README_CN.md
 include RELEASE_FILES.txt
 recursive-include assets *.png
 recursive-include splits *.json
