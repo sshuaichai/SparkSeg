@@ -196,24 +196,6 @@ Inference uses no test-time augmentation (TTA).
 
 ## 📦 Release weights
 
-The current tag is `v1.3.0`. `bundle` writes the weight archives to:
-
-```text
-./SparkSeg_releases/v1.3.0
-```
-
-Upload the following five files to the GitHub Release:
-
-```text
-sparkseg-acdc-mri-3d_fullres.zip
-sparkseg-brats2021-mri-3d_fullres.zip
-sparkseg-synapse-ct-3d_fullres.zip
-sparkseg-kits23-ct-3d_fullres.zip
-SHA256SUMS.txt
-```
-
-The same list is stored in [RELEASE_FILES.txt](RELEASE_FILES.txt).
-
 To download and install the released weights:
 
 ```bash
@@ -231,13 +213,6 @@ python -m SparkSeg.reproduce verify --load-checkpoints
 Each archive contains `manifest.json`, `plans.json`, `dataset.json`, and
 `fold_<fold>/checkpoint_final.pth`, with `splits_final.json` when a fixed split
 is used.
-
-Rebuild the release archives with:
-
-```bash
-python -m SparkSeg.reproduce bundle \
-  --out ./SparkSeg_releases/v1.3.0
-```
 
 ## 🐍 Python API
 

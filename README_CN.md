@@ -190,24 +190,6 @@ $nnUNet_raw/<Dataset>/labelsTs_SparkSeg/final_pre
 
 ## 📦 Release 权重
 
-当前 tag 为 `v1.3.0`。使用 `bundle` 后，权重包输出到当前项目下的：
-
-```text
-./SparkSeg_releases/v1.3.0
-```
-
-上传到 GitHub Release 的只有以下 5 个文件：
-
-```text
-sparkseg-acdc-mri-3d_fullres.zip
-sparkseg-brats2021-mri-3d_fullres.zip
-sparkseg-synapse-ct-3d_fullres.zip
-sparkseg-kits23-ct-3d_fullres.zip
-SHA256SUMS.txt
-```
-
-清单也保存在 [RELEASE_FILES.txt](RELEASE_FILES.txt)。
-
 使用 Release 权重：
 
 ```bash
@@ -224,13 +206,6 @@ python -m SparkSeg.reproduce verify --load-checkpoints
 
 每个权重包包含 `manifest.json`、`plans.json`、`dataset.json` 和
 `fold_<fold>/checkpoint_final.pth`；存在固定划分时还包含 `splits_final.json`。
-
-重新生成发布权重：
-
-```bash
-python -m SparkSeg.reproduce bundle \
-  --out ./SparkSeg_releases/v1.3.0
-```
 
 ## 🐍 Python API
 
