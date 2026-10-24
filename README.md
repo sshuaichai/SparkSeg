@@ -20,10 +20,6 @@ English | [Chinese](README_CN.md)
   context, while zero-initialised TAE, attention-gated decoding, and auxiliary
   prior supervision preserve detail and guide anchor selection.
 
-Training uses `L_seg + 0.05 L_prior + 0.02 L_prioraux`, SGD with learning rate
-`1e-2`, Nesterov momentum `0.99`, weight decay `3e-5`, polynomial decay, and
-`250/50` training/validation iterations per epoch.
-
 ## 📊 Results
 
 DSC is reported in % and HD95 in mm. Higher DSC and lower HD95 are better. The
@@ -31,16 +27,12 @@ best value in every numerical column is red bold with a pale red cell; memory is
 ranked by training/inference memory, and lower parameters, FLOPs, and latency
 are preferred.
 
-| Dataset | Modality | SparkSeg DSC | Matched control | Control DSC | Δ DSC | SparkSeg HD95 | Control HD95 | p |
-|---|---|---:|---|---:|---:|---:|---:|---:|
-| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | nnU-Net ResEnc | 91.13 | +0.85 | <strong><span style="color:#d62728">1.08</span></strong> | 1.09 | 2.7e-5 |
-| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | nnU-Net plain | 91.36 | +0.36 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 1.00 |
-| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | nnU-Net ResEnc | 85.54 | +0.40 | <strong><span style="color:#d62728">11.21</span></strong> | 11.91 | 0.76 |
-| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | nnU-Net ResEnc | 84.36 | +1.30 | <strong><span style="color:#d62728">13.41</span></strong> | 17.78 | - |
-
-Matched controls use the same encoder architecture as SparkSeg: ACDC, Synapse,
-and KiTS23 use nnU-Net ResEnc, while BraTS2021 uses plain nnU-Net. The KiTS23
-comparison also includes plain nnU-Net at 85.12 DSC / 18.41 mm.
+| Dataset | Modality | SparkSeg DSC | nnU-Net DSC | nnU-Net ResEnc DSC | SparkSeg HD95 | nnU-Net HD95 | nnU-Net ResEnc HD95 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | 91.17 | 91.13 | <strong><span style="color:#d62728">1.08</span></strong> | 1.11 | 1.09 |
+| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | 91.36 | 91.51 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 2.60 |
+| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | 84.43 | 85.54 | <strong><span style="color:#d62728">11.21</span></strong> | 11.72 | 11.91 |
+| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | 85.12 | 84.36 | <strong><span style="color:#d62728">13.41</span></strong> | 18.41 | 17.78 |
 
 ## 📋 Full method comparison
 
@@ -136,6 +128,10 @@ the reproduction CLI creates temporary trainer registration files, so no externa
 evaluation or bridge scripts are required.
 
 ## 🚀 Training
+
+Training uses `L_seg + 0.05 L_prior + 0.02 L_prioraux`, SGD with learning rate
+`1e-2`, Nesterov momentum `0.99`, weight decay `3e-5`, polynomial decay, and
+`250/50` training/validation iterations per epoch.
 
 Prepare a new dataset first. For KiTS23:
 

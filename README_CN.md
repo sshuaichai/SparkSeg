@@ -17,26 +17,18 @@
 - **互补的多尺度建模。** 并行 WinMHSA3D 提供窗口上下文；零初始化 TAE、
   注意力门控解码和辅助先验监督保留细节并引导锚点选择。
 
-训练目标为 `L_seg + 0.05 L_prior + 0.02 L_prioraux`，优化器为 SGD，初始
-学习率 `1e-2`、Nesterov 动量 `0.99`、权重衰减 `3e-5`、多项式衰减，每个
-epoch 执行 `250/50` 次训练/验证迭代。
-
 ## 📊 论文结果
 
 DSC 单位为 %，HD95 单位为 mm；DSC 越高越好，HD95 越低越好。每一数值列的
 最优值使用红色粗体和浅红底纹；显存按训练/推理两项依次比较，参数量、FLOPs
 和延迟均取较小值。
 
-| 数据集 | 模态 | SparkSeg DSC | 匹配对照 | 对照 DSC | Δ DSC | SparkSeg HD95 | 对照 HD95 | p |
-|---|---|---:|---|---:|---:|---:|---:|---:|
-| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | nnU-Net ResEnc | 91.13 | +0.85 | <strong><span style="color:#d62728">1.08</span></strong> | 1.09 | 2.7e-5 |
-| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | nnU-Net plain | 91.36 | +0.36 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 1.00 |
-| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | nnU-Net ResEnc | 85.54 | +0.40 | <strong><span style="color:#d62728">11.21</span></strong> | 11.91 | 0.76 |
-| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | nnU-Net ResEnc | 84.36 | +1.30 | <strong><span style="color:#d62728">13.41</span></strong> | 17.78 | - |
-
-匹配对照采用与 SparkSeg 相同的 encoder 架构：ACDC、Synapse 和 KiTS23 使用
-nnU-Net ResEnc，BraTS2021 使用 plain nnU-Net。KiTS23 的稿件同时报告 plain
-nnU-Net：85.12 DSC / 18.41 mm。
+| 数据集 | 模态 | SparkSeg DSC | nnU-Net DSC | nnU-Net ResEnc DSC | SparkSeg HD95 | nnU-Net HD95 | nnU-Net ResEnc HD95 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| ACDC | MRI | <strong><span style="color:#d62728">91.98</span></strong> | 91.17 | 91.13 | <strong><span style="color:#d62728">1.08</span></strong> | 1.11 | 1.09 |
+| BraTS2021 | MRI | <strong><span style="color:#d62728">91.73</span></strong> | 91.36 | 91.51 | <strong><span style="color:#d62728">2.57</span></strong> | 2.86 | 2.60 |
+| Synapse/BTCV | CT | <strong><span style="color:#d62728">85.94</span></strong> | 84.43 | 85.54 | <strong><span style="color:#d62728">11.21</span></strong> | 11.72 | 11.91 |
+| KiTS23 | CT | <strong><span style="color:#d62728">85.66</span></strong> | 85.12 | 84.36 | <strong><span style="color:#d62728">13.41</span></strong> | 18.41 | 17.78 |
 
 ## 📋 论文全部方法对比
 
@@ -129,6 +121,10 @@ python -m SparkSeg.reproduce doctor --datasets acdc brats synapse kits23
 注册文件，不依赖当前仓库外的评估脚本或桥接文件。
 
 ## 🚀 训练
+
+训练目标为 `L_seg + 0.05 L_prior + 0.02 L_prioraux`，优化器为 SGD，初始
+学习率 `1e-2`、Nesterov 动量 `0.99`、权重衰减 `3e-5`、多项式衰减，每个
+epoch 执行 `250/50` 次训练/验证迭代。
 
 KiTS23 尚未预处理时先执行：
 
