@@ -1,0 +1,11 @@
+Release tag: v1.3.0
+
+Upload these five files:
+sparkseg-acdc-mri-3d_fullres.zip
+sparkseg-brats2021-mri-3d_fullres.zip
+sparkseg-synapse-ct-3d_fullres.zip
+sparkseg-kits23-ct-3d_fullres.zip
+SHA256SUMS.txt
+
+Generate them after all four checkpoint_final.pth files are present:
+python -m SparkSeg.reproduce bundle --out .\SparkSeg_releases\v1.3.0
