@@ -6,25 +6,26 @@
 
 ![SparkSeg 总体结构](assets/paper/fig01_overview_pr.png)
 
-## 🧩 方法
+## 💡 亮点
 
-SparkSeg 保留稠密卷积 U-Net 特征网格，并把固定的上下文预算分配到任务相关锚点。
+- **任务感知的稀疏上下文。** 以稠密卷积 U-Net 为主干，将无界 token 交互
+  替换为集中到任务相关解剖区域的固定上下文预算。
+- **先验驱动的硬 Top-K 锚点。** PGTS 结合解剖先验与可学习分数，在
+  `128/64/32/32` 的分阶段预算下选择锚点。
+- **多源稀疏读写。** MSBA 聚合所选锚点、当前特征和前一层级证据；门控写回
+  只更新被选中的位置，同时保留稠密特征通路。
+- **互补的多尺度建模。** 并行 WinMHSA3D 提供窗口上下文；零初始化 TAE、
+  注意力门控解码和辅助先验监督保留细节并引导锚点选择。
 
-| 阶段 | 操作 |
-|---|---|
-| Stage 1 | 零初始化三轴增强 TAE |
-| Stages 2–5 | TAE、先验门控 token 选择 PGTS、硬 Top-K、多源稀疏块注意力 MSBA、门控写回、并行 WinMHSA3D |
-| Stage 6 | CNN 瓶颈层与辅助先验头 |
-| Decoder | 每级一个注意力门的 U-Net 解码器 |
-
-Stages 2–5 的锚点预算为 `128/64/32/32`。训练目标为
-`L_seg + 0.05 L_prior + 0.02 L_prioraux`。优化器为 SGD，初始学习率
-`1e-2`、Nesterov 动量 `0.99`、权重衰减 `3e-5`、多项式衰减，每个 epoch
-执行 `250/50` 次训练/验证迭代。
+训练目标为 `L_seg + 0.05 L_prior + 0.02 L_prioraux`，优化器为 SGD，初始
+学习率 `1e-2`、Nesterov 动量 `0.99`、权重衰减 `3e-5`、多项式衰减，每个
+epoch 执行 `250/50` 次训练/验证迭代。
 
 ## 📊 论文结果
 
-DSC 单位为 %，HD95 单位为 mm。最优值用红色粗体显示。
+DSC 单位为 %，HD95 单位为 mm；DSC 越高越好，HD95 越低越好。每一数值列的
+最优值使用红色粗体和浅红底纹；显存按训练/推理两项依次比较，参数量、FLOPs
+和延迟均取较小值。
 
 | 数据集 | 模态 | SparkSeg DSC | 匹配对照 | 对照 DSC | Δ DSC | SparkSeg HD95 | 对照 HD95 | p |
 |---|---|---:|---|---:|---:|---:|---:|---:|
@@ -46,7 +47,7 @@ nnU-Net：85.12 DSC / 18.41 mm。
 BraTS2021: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table1_brats2021.png"><img src="assets/paper/table1_brats2021.png" width="100%" alt="Table 1. BraTS2021 comparison"></a>
+  <a href="assets/paper/table1_brats2021_v5.png"><img src="assets/paper/table1_brats2021_v5.png" width="100%" alt="Table 1. BraTS2021 comparison"></a>
 </p>
 
 ### Table 2. ACDC comparison
@@ -54,7 +55,7 @@ BraTS2021: DSC (%) and HD95 (mm).
 ACDC: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table2_acdc.png"><img src="assets/paper/table2_acdc.png" width="100%" alt="Table 2. ACDC comparison"></a>
+  <a href="assets/paper/table2_acdc_v5.png"><img src="assets/paper/table2_acdc_v5.png" width="100%" alt="Table 2. ACDC comparison"></a>
 </p>
 
 ### Table 3a. Synapse/BTCV DSC
@@ -62,7 +63,7 @@ ACDC: DSC (%) and HD95 (mm).
 Synapse/BTCV: DSC (%) by organ.
 
 <p align="center">
-  <a href="assets/paper/table3a_synapse_dsc.png"><img src="assets/paper/table3a_synapse_dsc.png" width="100%" alt="Table 3a. Synapse/BTCV DSC"></a>
+  <a href="assets/paper/table3a_synapse_dsc_v5.png"><img src="assets/paper/table3a_synapse_dsc_v5.png" width="100%" alt="Table 3a. Synapse/BTCV DSC"></a>
 </p>
 
 ### Table 3b. Synapse/BTCV HD95 and resources
@@ -70,7 +71,7 @@ Synapse/BTCV: DSC (%) by organ.
 Synapse/BTCV: HD95 (mm) and resources.
 
 <p align="center">
-  <a href="assets/paper/table3b_synapse_hd95_resources.png"><img src="assets/paper/table3b_synapse_hd95_resources.png" width="100%" alt="Table 3b. Synapse/BTCV HD95 and resources"></a>
+  <a href="assets/paper/table3b_synapse_hd95_resources_v5.png"><img src="assets/paper/table3b_synapse_hd95_resources_v5.png" width="100%" alt="Table 3b. Synapse/BTCV HD95 and resources"></a>
 </p>
 
 ### Table 4. KiTS23 comparison
@@ -78,7 +79,7 @@ Synapse/BTCV: HD95 (mm) and resources.
 KiTS23: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table4_kits23.png"><img src="assets/paper/table4_kits23.png" width="100%" alt="Table 4. KiTS23 comparison"></a>
+  <a href="assets/paper/table4_kits23_v5.png"><img src="assets/paper/table4_kits23_v5.png" width="100%" alt="Table 4. KiTS23 comparison"></a>
 </p>
 
 ## 🧠 可用训练器
@@ -250,7 +251,10 @@ print(describe_preset("brats"))
 
 ## 🗂️ 数据与划分
 
-固定划分文件位于 [splits](splits/)。
+每个预设的固定划分文件均位于 [splits](splits/)。ACDC、BraTS2021 和
+KiTS23 使用 fold 0。Synapse 使用 fold `all`：其划分文件记录 `imagesTr` 中的
+18 个病例，nnU-Net 将它们同时用于训练和验证；`imagesTs` 中的 12 个病例仍
+作为独立的 held-out 测试集。
 
 | 数据集 | 模态 | 病例数 | 训练 / 验证 / held-out 测试 | 来源 |
 |---|---|---:|---|---|

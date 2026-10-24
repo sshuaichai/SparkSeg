@@ -6,25 +6,30 @@ English | [Chinese](README_CN.md)
 
 ![SparkSeg overview](assets/paper/fig01_overview_pr.png)
 
-## 🧩 Method
+## 💡 Highlights
 
-SparkSeg retains a dense convolutional U-Net feature grid and allocates a fixed context budget to task-relevant anchors.
+- **Task-aware sparse context.** SparkSeg keeps the dense convolutional U-Net
+  host and replaces unbounded token interaction with a fixed contextual budget
+  focused on task-relevant anatomy.
+- **Prior-guided hard Top-K anchors.** PGTS combines anatomical priors with
+  learnable scores and selects anchors under the stage budgets `128/64/32/32`.
+- **Multi-source sparse read and write.** MSBA aggregates selected anchors,
+  current features, and previous-stage evidence; gated write-back updates only
+  the chosen locations and preserves the dense feature path.
+- **Complementary multi-scale modelling.** Parallel WinMHSA3D adds window
+  context, while zero-initialised TAE, attention-gated decoding, and auxiliary
+  prior supervision preserve detail and guide anchor selection.
 
-| Stage | Operation |
-|---|---|
-| Stage 1 | Zero-initialised tri-axial enhancement (TAE) |
-| Stages 2–5 | TAE, prior-gated token selection (PGTS), hard Top-K, multi-source sparse block attention (MSBA), gated write-back, and parallel WinMHSA3D |
-| Stage 6 | CNN bottleneck with an auxiliary prior head |
-| Decoder | U-Net decoder with one attention gate per level |
-
-The anchor budgets at Stages 2–5 are `128/64/32/32`. The training objective is
-`L_seg + 0.05 L_prior + 0.02 L_prioraux`. Optimisation uses SGD with an initial
-learning rate of `1e-2`, Nesterov momentum `0.99`, weight decay `3e-5`, and
-polynomial decay, with `250/50` training/validation iterations per epoch.
+Training uses `L_seg + 0.05 L_prior + 0.02 L_prioraux`, SGD with learning rate
+`1e-2`, Nesterov momentum `0.99`, weight decay `3e-5`, polynomial decay, and
+`250/50` training/validation iterations per epoch.
 
 ## 📊 Results
 
-DSC is reported in % and HD95 in mm. Best values are shown in red bold.
+DSC is reported in % and HD95 in mm. Higher DSC and lower HD95 are better. The
+best value in every numerical column is red bold with a pale red cell; memory is
+ranked by training/inference memory, and lower parameters, FLOPs, and latency
+are preferred.
 
 | Dataset | Modality | SparkSeg DSC | Matched control | Control DSC | Δ DSC | SparkSeg HD95 | Control HD95 | p |
 |---|---|---:|---|---:|---:|---:|---:|---:|
@@ -47,7 +52,7 @@ column is shown in red bold.
 BraTS2021: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table1_brats2021.png"><img src="assets/paper/table1_brats2021.png" width="100%" alt="Table 1. BraTS2021 comparison"></a>
+  <a href="assets/paper/table1_brats2021_v5.png"><img src="assets/paper/table1_brats2021_v5.png" width="100%" alt="Table 1. BraTS2021 comparison"></a>
 </p>
 
 ### Table 2. ACDC comparison
@@ -55,7 +60,7 @@ BraTS2021: DSC (%) and HD95 (mm).
 ACDC: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table2_acdc.png"><img src="assets/paper/table2_acdc.png" width="100%" alt="Table 2. ACDC comparison"></a>
+  <a href="assets/paper/table2_acdc_v5.png"><img src="assets/paper/table2_acdc_v5.png" width="100%" alt="Table 2. ACDC comparison"></a>
 </p>
 
 ### Table 3a. Synapse/BTCV DSC
@@ -63,7 +68,7 @@ ACDC: DSC (%) and HD95 (mm).
 Synapse/BTCV: DSC (%) by organ.
 
 <p align="center">
-  <a href="assets/paper/table3a_synapse_dsc.png"><img src="assets/paper/table3a_synapse_dsc.png" width="100%" alt="Table 3a. Synapse/BTCV DSC"></a>
+  <a href="assets/paper/table3a_synapse_dsc_v5.png"><img src="assets/paper/table3a_synapse_dsc_v5.png" width="100%" alt="Table 3a. Synapse/BTCV DSC"></a>
 </p>
 
 ### Table 3b. Synapse/BTCV HD95 and resources
@@ -71,7 +76,7 @@ Synapse/BTCV: DSC (%) by organ.
 Synapse/BTCV: HD95 (mm) and resources.
 
 <p align="center">
-  <a href="assets/paper/table3b_synapse_hd95_resources.png"><img src="assets/paper/table3b_synapse_hd95_resources.png" width="100%" alt="Table 3b. Synapse/BTCV HD95 and resources"></a>
+  <a href="assets/paper/table3b_synapse_hd95_resources_v5.png"><img src="assets/paper/table3b_synapse_hd95_resources_v5.png" width="100%" alt="Table 3b. Synapse/BTCV HD95 and resources"></a>
 </p>
 
 ### Table 4. KiTS23 comparison
@@ -79,7 +84,7 @@ Synapse/BTCV: HD95 (mm) and resources.
 KiTS23: DSC (%) and HD95 (mm).
 
 <p align="center">
-  <a href="assets/paper/table4_kits23.png"><img src="assets/paper/table4_kits23.png" width="100%" alt="Table 4. KiTS23 comparison"></a>
+  <a href="assets/paper/table4_kits23_v5.png"><img src="assets/paper/table4_kits23_v5.png" width="100%" alt="Table 4. KiTS23 comparison"></a>
 </p>
 
 ## 🧠 Available trainers
@@ -254,7 +259,10 @@ Preset names are `acdc`, `brats`/`brats2021`, `synapse`/`btcv`, and
 
 ## 🗂️ Data and splits
 
-Fixed split files are provided in [splits](splits/).
+A fixed split file is provided in [splits](splits/) for every preset. ACDC,
+BraTS2021, and KiTS23 train on fold 0. Synapse uses fold `all`: its split file
+records the 18 cases in `imagesTr`, which nnU-Net uses for both training and
+validation, while the 12 cases in `imagesTs` remain the held-out test set.
 
 | Dataset | Modality | Cases | Training / validation / held-out test | Source |
 |---|---|---:|---|---|
