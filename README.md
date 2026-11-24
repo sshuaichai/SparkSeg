@@ -2,7 +2,7 @@
 
 English | [Chinese](README_CN.md)
 
-**SparkSeg: sparse prior-guided anchor attention for budgeted 3D CT and MRI segmentation**
+**SparkSeg: sparse prior-guided anchor attention for 3D CT and MRI segmentation**
 
 SparkSeg keeps the dense convolutional U-Net host and makes long-range context an explicit, ablatable
 read/write operation on a fixed Top-K anchor set. A task-conditioned prior decides where to read, a hard
@@ -379,7 +379,7 @@ protocol. KiTS23 is distributed under CC BY-NC-SA 4.0.
 ```bibtex
 @misc{chai2026sparkseg,
   author  = {Chai, Shuaishuai and Jin, Liang and Li, Ming},
-  title   = {SparkSeg: Sparse Prior-Guided Anchor Attention for 3D CT and MRI Segmentation},
+  title   = {SparkSeg: sparse prior-guided anchor attention for 3D CT and MRI segmentation},
   year    = {2026},
   url     = {https://github.com/sshuaichai/SparkSeg}
 }

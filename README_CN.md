@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-**SparkSeg：面向固定预算 3D CT / MRI 分割的稀疏先验引导锚点注意力网络**
+**SparkSeg：面向 3D CT / MRI 分割的稀疏先验引导锚点注意力网络**
 
 SparkSeg 以稠密卷积 U-Net 为主干，把长程上下文变成固定 Top-K 锚点集上显式、可消融的读写操作：
 任务条件先验决定“读哪里”，分阶段硬 Top-K 决定“读多少”，多源稀疏块注意力与门控残差写回只更新
@@ -375,7 +375,7 @@ CC BY-NC-SA 4.0。
 ```bibtex
 @misc{chai2026sparkseg,
   author  = {Chai, Shuaishuai and Jin, Liang and Li, Ming},
-  title   = {SparkSeg: Sparse Prior-Guided Anchor Attention for 3D CT and MRI Segmentation},
+  title   = {SparkSeg: sparse prior-guided anchor attention for 3D CT and MRI segmentation},
   year    = {2026},
   url     = {https://github.com/sshuaichai/SparkSeg}
 }

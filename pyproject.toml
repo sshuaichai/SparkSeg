@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "sparkseg"
 version = "1.3.0"
-description = "SparkSeg: sparse prior-guided anchor attention for budgeted 3D CT and MRI segmentation"
+description = "SparkSeg: sparse prior-guided anchor attention for 3D CT and MRI segmentation"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
