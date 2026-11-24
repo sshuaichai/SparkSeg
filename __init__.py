@@ -7,13 +7,14 @@ Public API::
     net = build_sparkseg(in_channels, num_classes, plan_strides=strides,
                          preset="acdc")     # or "synapse" / "brats" / "kits23"
 
-Network code lives under :mod:`SparkSeg.network`. Dataset-specific nnU-Net trainers
-live in :mod:`SparkSeg.nnUNetTrainerSparkSeg`.
+The implementation lives in
+:mod:`nnunetv2.training.network.source_code.SparkSeg`. Dataset-specific nnU-Net
+trainers live in :mod:`nnunetv2.training.nnUNetTrainer.nnUNetTrainerSparkSeg`.
 """
 
 from __future__ import annotations
 
-from .network import (  # noqa: F401
+from nnunetv2.training.network.source_code.SparkSeg import (  # noqa: F401
     ANCHOR_K_SCHEDULE,
     CLEAN_CONFIG,
     DATASET_PRESETS,

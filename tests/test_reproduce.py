@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from SparkSeg.network.config import DATASET_PRESETS
+from nnunetv2.training.network.source_code.SparkSeg.config import DATASET_PRESETS
 from SparkSeg.release import (
     bundle_one,
     install_archive,
@@ -47,7 +47,15 @@ def test_readme_trainer_table_matches_presets():
 
 
 def test_presets_have_reproducible_splits():
-    split_dir = Path(__file__).resolve().parents[1] / "splits"
+    split_dir = (
+        Path(__file__).resolve().parents[1]
+        / "nnunetv2"
+        / "training"
+        / "network"
+        / "source_code"
+        / "SparkSeg"
+        / "splits"
+    )
     for preset in DATASET_PRESETS.values():
         split = json.loads(
             (split_dir / f"{preset.raw_name}.json").read_text(encoding="utf-8")

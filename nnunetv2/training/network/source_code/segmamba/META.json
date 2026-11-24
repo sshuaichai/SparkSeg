@@ -1,0 +1,50 @@
+{
+  "family": "segmamba",
+  "tier": "T2",
+  "tier_meaning": "vendored upstream source (verbatim copy)",
+  "moved_from": "nnunetv2/training/network/SegMamba-main",
+  "path": "nnunetv2/training/network/source_code/segmamba/upstream",
+  "file_count": 582,
+  "size_mb": 7.6,
+  "license_files": [
+    "LICENSE",
+    "LICENSE"
+  ],
+  "upstream_repo": "ge-xing/SegMamba",
+  "upstream_commit": "cff35970e0c542ad940b5701267f1ac888298b06",
+  "upstream_verified": true,
+  "wired_by": "network/mamba_import.py (_SEGMAMBA_MAMBA)",
+  "status": "migrated; pinned to cff35970e0c5 (39/40 files verified)",
+  "upstream_confidence": "high",
+  "upstream_verify_method": "github_api_tree_blob_match",
+  "upstream_note": "dir name = repo name; README cites nnU-Net/MONAI/Vim as dependencies",
+  "upstream_repo_candidates": [
+    "ge-xing/SegMamba (577★, license=None)",
+    "ge-xing/SegMamba-V2 (36★, license=None)",
+    "GailPika/Master-s-Degree (1★, license=None)"
+  ],
+  "upstream_readme_urls": [
+    "MIC-DKFZ/nnUNet",
+    "Project-MONAI/MONAI",
+    "hustvl/Vim"
+  ],
+  "license": {
+    "detected": "Apache-2.0",
+    "files": [
+      "SegMamba-main\\causal-conv1d\\LICENSE",
+      "SegMamba-main\\mamba\\LICENSE"
+    ],
+    "file_missing": false,
+    "upstream_spdx": null
+  },
+  "pin": {
+    "method": "github_api_tree_blob_match",
+    "pinned": true,
+    "commit": "cff35970e0c542ad940b5701267f1ac888298b06",
+    "matched_files": "39/40 distinctive files byte-identical to that commit",
+    "how_to_reproduce": "git clone https://github.com/ge-xing/SegMamba.git && git checkout cff35970e0c542ad940b5701267f1ac888298b06 (then copy the same subset of sources under upstream/)"
+  },
+  "next_actions": [
+    "pin commit by re-cloning ge-xing/SegMamba at a specific commit (current copy came from a zip of the default branch)"
+  ]
+}

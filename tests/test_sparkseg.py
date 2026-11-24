@@ -118,7 +118,7 @@ def test_build_and_forward(preset, strides, shape):
 def test_pre_manuscript_names_are_gone():
     """Only paper names are exported; the pre-manuscript identifiers were removed."""
     import SparkSeg as P
-    import SparkSeg.network.blocks as B
+    import nnunetv2.training.network.source_code.SparkSeg.blocks as B
 
     removed = (
         "SPARKUNet", "SPARKUnit", "SPARKDecoder", "AxialDW3D", "TokenAllocationNetwork",
@@ -135,7 +135,7 @@ def test_legacy_checkpoint_keys_are_remapped():
     """Checkpoints whose unit keys carry no depth index still load."""
     # NOTE: the package re-exports the class ``SparkSeg``, which shadows the submodule
     # attribute of the same name; import the module explicitly.
-    M = importlib.import_module("SparkSeg.network.model")
+    M = importlib.import_module("nnunetv2.training.network.source_code.SparkSeg.model")
     remapped = M.SparkSeg._remap_legacy_keys({
         "units.1.block.weight": 0,                # no depth index -> inserted
         "units.2.0.block.weight": 0,              # already indexed -> untouched

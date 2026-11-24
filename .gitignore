@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+build/
+dist/
+*.egg-info/
+SparkSeg_releases/
+*.zip
+*.pth
+*.npz

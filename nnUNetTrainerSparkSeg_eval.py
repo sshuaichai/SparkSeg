@@ -20,7 +20,7 @@ try:
 except ImportError as exc:
     raise ImportError("SimpleITK is required for SparkSeg evaluation") from exc
 
-from .network.config import resolve_preset
+from nnunetv2.training.network.source_code.SparkSeg.config import resolve_preset
 
 
 @dataclass(frozen=True)

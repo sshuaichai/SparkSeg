@@ -12,7 +12,11 @@ import zipfile
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
-from .network.config import DATASET_PRESETS, DatasetPreset, resolve_preset
+from nnunetv2.training.network.source_code.SparkSeg.config import (
+    DATASET_PRESETS,
+    DatasetPreset,
+    resolve_preset,
+)
 
 PLANS_IDENTIFIER = "nnUNetPlans"
 CONFIGURATION = "3d_fullres"
@@ -93,7 +97,16 @@ def _bundle_files(
     checkpoint: str,
     include_best: bool,
 ) -> Dict[str, Path]:
-    split_local = Path(__file__).resolve().parent / "splits" / f"{preset.raw_name}.json"
+    split_local = (
+        Path(__file__).resolve().parent
+        / "nnunetv2"
+        / "training"
+        / "network"
+        / "source_code"
+        / "SparkSeg"
+        / "splits"
+        / f"{preset.raw_name}.json"
+    )
     split_path = folder / "splits_final.json"
     if not split_path.is_file():
         split_path = split_local

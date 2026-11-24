@@ -1,0 +1,46 @@
+{
+  "family": "slim_unetrv2",
+  "tier": "T2",
+  "tier_meaning": "vendored upstream source (verbatim copy)",
+  "moved_from": "nnunetv2/training/network/Slim-UNETRV2-main/Slim-UNETRV2-main (double-nested; outer level dropped)",
+  "path": "nnunetv2/training/network/source_code/slim_unetrv2/upstream",
+  "file_count": 329,
+  "size_mb": 18.0,
+  "license_files": [],
+  "upstream_repo": "deepang-ai/Slim-UNETRV2",
+  "upstream_commit": "1479bb0e2f086548deb9d31aa3502ae0b289c3af",
+  "upstream_verified": true,
+  "wired_by": "nnunetv2/training/network/mamba_import.py (_SLIM_MAMBA -> .../slim_unetrv2/upstream/environment/mamba)",
+  "status": "migrated; pinned to 1479bb0e2f08 (37/40 files verified)",
+  "upstream_confidence": "high",
+  "upstream_verify_method": "github_api_tree_blob_match",
+  "upstream_note": "unique name match; repo license MIT",
+  "upstream_repo_candidates": [
+    "deepang-ai/Slim-UNETRV2 (17★, license=MIT)"
+  ],
+  "upstream_readme_urls": [
+    "EleutherAI/lm-evaluation-harness",
+    "MIC-DKFZ/nnUNet"
+  ],
+  "license": {
+    "detected": "Apache-2.0",
+    "files": [
+      "LICENSE",
+      "environment\\causal-conv1d\\LICENSE",
+      "environment\\mamba\\LICENSE",
+      "nnUNet\\LICENSE"
+    ],
+    "file_missing": false,
+    "upstream_spdx": "MIT"
+  },
+  "pin": {
+    "method": "github_api_tree_blob_match",
+    "pinned": true,
+    "commit": "1479bb0e2f086548deb9d31aa3502ae0b289c3af",
+    "matched_files": "37/40 distinctive files byte-identical to that commit",
+    "how_to_reproduce": "git clone https://github.com/deepang-ai/Slim-UNETRV2.git && git checkout 1479bb0e2f086548deb9d31aa3502ae0b289c3af (then copy the same subset of sources under upstream/)"
+  },
+  "next_actions": [
+    "pin commit by re-cloning deepang-ai/Slim-UNETRV2 at a specific commit (current copy came from a zip of the default branch)"
+  ]
+}

@@ -15,7 +15,11 @@ from typing import List, Sequence
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-    from SparkSeg.network.config import DATASET_PRESETS, DatasetPreset, resolve_preset
+    from nnunetv2.training.network.source_code.SparkSeg.config import (
+        DATASET_PRESETS,
+        DatasetPreset,
+        resolve_preset,
+    )
     from SparkSeg.release import (
         DEFAULT_TAG,
         bundle_all,
@@ -27,7 +31,11 @@ if __package__ in (None, ""):
         source_model_folder,
     )
 else:
-    from .network.config import DATASET_PRESETS, DatasetPreset, resolve_preset
+    from nnunetv2.training.network.source_code.SparkSeg.config import (
+        DATASET_PRESETS,
+        DatasetPreset,
+        resolve_preset,
+    )
     from .release import (
         DEFAULT_TAG,
         bundle_all,
@@ -153,7 +161,16 @@ def run_command(command: Sequence[str], *, dry_run: bool = False) -> None:
 
 
 def built_in_split(preset: DatasetPreset) -> Path:
-    return Path(__file__).resolve().parent / "splits" / f"{preset.raw_name}.json"
+    return (
+        Path(__file__).resolve().parent
+        / "nnunetv2"
+        / "training"
+        / "network"
+        / "source_code"
+        / "SparkSeg"
+        / "splits"
+        / f"{preset.raw_name}.json"
+    )
 
 
 def _copy_split(preset: DatasetPreset, destination: Path, force: bool) -> None:

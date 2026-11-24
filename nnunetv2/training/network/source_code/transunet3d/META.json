@@ -1,0 +1,60 @@
+{
+  "family": "transunet3d",
+  "tier": "T2",
+  "tier_meaning": "vendored upstream source (verbatim copy)",
+  "moved_from": "nnunetv2/training/network/3D-TransUNet",
+  "path": "nnunetv2/training/network/source_code/transunet3d/upstream",
+  "file_count": 85,
+  "size_mb": 0.9,
+  "license_files": [
+    "LICENSE"
+  ],
+  "upstream_repo": "Beckschen/3D-TransUNet",
+  "upstream_commit": "9f18182f5f7b26fc81e2f2d70fb5c40ee8a58908",
+  "upstream_verified": true,
+  "wired_by": "network/TransUNet3D.py (sys.path + nn_transunet import)",
+  "status": "migrated; pinned to 9f18182f5f7b (34/37 files verified)",
+  "dedup": {
+    "removed": "nnunetv2/training/network/nn_transunet",
+    "kept": "source_code/transunet3d/upstream/nn_transunet",
+    "identical": false,
+    "note": "top-level copy was a byte-identical duplicate of 3D-TransUNet/nn_transunet"
+  },
+  "duplicate_package_versions": {
+    "wired_copy": "source_code/transunet3d/upstream/nn_transunet",
+    "isolated_copy": "source_code/transunet3d/legacy_nn_transunet",
+    "identical": false,
+    "note": "two nn_transunet versions existed; the wired one is imported through the sys.path insert in network/TransUNet3D.py. The other one is isolated here (renamed so it can never shadow the wired package) and needs a decision: keep as reference or delete."
+  },
+  "upstream_confidence": "high",
+  "upstream_verify_method": "github_api_tree_blob_match",
+  "upstream_note": "network/TransUNet3D.py docstring already cites Beckschen/3D-TransUNet",
+  "upstream_repo_candidates": [
+    "Beckschen/3D-TransUNet (320★, license=Apache-2.0)",
+    "qizhaoaoe/transunet (20★, license=None)",
+    "Onkarsus13/TransUnet_Pancrease_3d_seg (2★, license=None)"
+  ],
+  "upstream_readme_urls": [
+    "MIC-DKFZ/nnUNet",
+    "facebookresearch/Mask2Former",
+    "Beckschen/TransUNet"
+  ],
+  "license": {
+    "detected": "Apache-2.0",
+    "files": [
+      "LICENSE"
+    ],
+    "file_missing": false,
+    "upstream_spdx": "Apache-2.0"
+  },
+  "pin": {
+    "method": "github_api_tree_blob_match",
+    "pinned": true,
+    "commit": "9f18182f5f7b26fc81e2f2d70fb5c40ee8a58908",
+    "matched_files": "34/37 distinctive files byte-identical to that commit",
+    "how_to_reproduce": "git clone https://github.com/Beckschen/3D-TransUNet.git && git checkout 9f18182f5f7b26fc81e2f2d70fb5c40ee8a58908 (then copy the same subset of sources under upstream/)"
+  },
+  "next_actions": [
+    "pin commit by re-cloning Beckschen/3D-TransUNet at a specific commit (current copy came from a zip of the default branch)"
+  ]
+}

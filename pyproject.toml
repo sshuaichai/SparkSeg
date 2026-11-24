@@ -15,12 +15,28 @@ authors = [
     { name = "Ming Li" },
 ]
 dependencies = [
-    "nnunetv2==2.8.0",
     "torch>=2.1.2,!=2.9.*",
-    "numpy>=1.24",
-    "SimpleITK>=2.2.1",
-    "scipy",
+    "acvl-utils>=0.2.6,<0.3",
+    "dynamic-network-architectures>=0.4.4,<0.5",
     "tqdm",
+    "numpy>=1.24",
+    "scipy",
+    "batchgenerators>=0.25.1",
+    "batchgeneratorsv2>=0.3.2",
+    "scikit-learn",
+    "scikit-image>=0.19.3",
+    "SimpleITK>=2.2.1",
+    "pandas",
+    "graphviz",
+    "tifffile",
+    "requests",
+    "nibabel",
+    "matplotlib",
+    "seaborn",
+    "imagecodecs",
+    "yacs",
+    "einops",
+    "blosc2>=3.3.2",
 ]
 
 [project.optional-dependencies]
@@ -28,17 +44,15 @@ dev = ["pytest>=8"]
 
 [project.scripts]
 sparkseg-reproduce = "SparkSeg.reproduce:main"
+nnUNetv2_plan_and_preprocess = "nnunetv2.experiment_planning.plan_and_preprocess_entrypoints:plan_and_preprocess_entry"
+nnUNetv2_train = "nnunetv2.run.run_training:run_training_entry"
+nnUNetv2_predict = "nnunetv2.inference.predict_from_raw_data:predict_entry_point"
 
 [project.urls]
 Homepage = "https://github.com/sshuaichai/SparkSeg"
 Repository = "https://github.com/sshuaichai/SparkSeg"
 
-[tool.setuptools]
-packages = ["SparkSeg", "SparkSeg.network"]
-package-dir = { SparkSeg = "." }
-
 [tool.setuptools.package-data]
-SparkSeg = [
-    "assets/paper/*.png",
-    "splits/*.json",
+nnunetv2 = [
+    "training/network/source_code/**/*",
 ]

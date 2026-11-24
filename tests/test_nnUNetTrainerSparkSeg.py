@@ -5,8 +5,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-import SparkSeg.nnUNetTrainerSparkSeg as trainer_module
-from SparkSeg.network.config import resolve_preset
+import nnunetv2.training.nnUNetTrainer.nnUNetTrainerSparkSeg as trainer_module
+from nnunetv2.training.network.source_code.SparkSeg.config import resolve_preset
 from SparkSeg.reproduce import _subprocess_env
 from SparkSeg.nnUNetTrainerSparkSeg import (
     TRAINER_BY_PRESET,

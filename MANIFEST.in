@@ -1,0 +1,6 @@
+include LICENSE.txt
+include README.md
+include README_CN.md
+include RELEASE_FILES.txt
+recursive-include nnunetv2/training/network/source_code/SparkSeg/assets *.png
+recursive-include nnunetv2/training/network/source_code/SparkSeg/splits *.json

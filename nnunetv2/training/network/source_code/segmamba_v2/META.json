@@ -1,0 +1,43 @@
+{
+  "family": "segmamba_v2",
+  "tier": "T2",
+  "tier_meaning": "vendored upstream source (verbatim copy)",
+  "moved_from": "nnunetv2/training/network/SegMamba-V2-main",
+  "path": "nnunetv2/training/network/source_code/segmamba_v2/upstream",
+  "file_count": 169,
+  "size_mb": 1.1,
+  "license_files": [],
+  "upstream_repo": "ge-xing/SegMamba-V2",
+  "upstream_commit": "7b819768826f1d36e3cd81348cefdc3cbb16d3cd",
+  "upstream_verified": true,
+  "wired_by": "network/mamba_import.py (path filter)",
+  "status": "migrated; pinned to 7b819768826f (23/23 files verified)",
+  "upstream_confidence": "high",
+  "upstream_verify_method": "github_api_tree_blob_match",
+  "upstream_note": "same author as SegMamba",
+  "upstream_repo_candidates": [
+    "ge-xing/SegMamba-V2 (36★, license=None)",
+    "buwanzhou/SegMamba-V2 (0★, license=None)",
+    "1mnotNuengNueng/heart_segmamba_v2 (0★, license=None)"
+  ],
+  "upstream_readme_urls": [
+    "MrGiovanni/AbdomenAtlas"
+  ],
+  "license": {
+    "detected": null,
+    "files": [],
+    "file_missing": true,
+    "upstream_spdx": null
+  },
+  "pin": {
+    "method": "github_api_tree_blob_match",
+    "pinned": true,
+    "commit": "7b819768826f1d36e3cd81348cefdc3cbb16d3cd",
+    "matched_files": "23/23 distinctive files byte-identical to that commit",
+    "how_to_reproduce": "git clone https://github.com/ge-xing/SegMamba-V2.git && git checkout 7b819768826f1d36e3cd81348cefdc3cbb16d3cd (then copy the same subset of sources under upstream/)"
+  },
+  "next_actions": [
+    "pin commit by re-cloning ge-xing/SegMamba-V2 at a specific commit (current copy came from a zip of the default branch)",
+    "add upstream LICENSE text"
+  ]
+}

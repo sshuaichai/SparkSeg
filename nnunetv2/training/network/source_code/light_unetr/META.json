@@ -1,0 +1,44 @@
+{
+  "family": "light_unetr",
+  "tier": "T2",
+  "tier_meaning": "vendored upstream source (verbatim copy)",
+  "moved_from": "nnunetv2/training/network/Light-UNETR-main",
+  "path": "nnunetv2/training/network/source_code/light_unetr/upstream",
+  "file_count": 53,
+  "size_mb": 0.3,
+  "license_files": [
+    "LICENSE"
+  ],
+  "upstream_repo": "CUHK-AIM-Group/Light-UNETR",
+  "upstream_commit": null,
+  "upstream_verified": true,
+  "wired_by": "docstring path only",
+  "status": "migrated; upstream repo recorded",
+  "upstream_confidence": "high",
+  "upstream_verify_method": "github_search+name",
+  "upstream_note": "matches paper group (CUHK AIM)",
+  "upstream_repo_candidates": [
+    "CUHK-AIM-Group/Light-UNETR (15★, license=MIT)",
+    "jyotidabass/Pancreas_unetr_btcv_segmentation_3d_lightning. (1★, license=None)"
+  ],
+  "upstream_readme_urls": [
+    "grant-jpg/FUSSNet",
+    "HiLab-git/SSL4MIS",
+    "yulequan/UA-MT"
+  ],
+  "license": {
+    "detected": "MIT",
+    "files": [
+      "Light-UNETR-main\\LICENSE"
+    ],
+    "file_missing": false
+  },
+  "pin": {
+    "method": "zip of default branch (no commit information)",
+    "pinned": false,
+    "how_to_pin": "git clone <repo> && git checkout <commit> && copy the needed sources under upstream/"
+  },
+  "next_actions": [
+    "pin commit by re-cloning CUHK-AIM-Group/Light-UNETR at a specific commit (current copy came from a zip of the default branch)"
+  ]
+}
